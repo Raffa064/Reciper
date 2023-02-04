@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:12
+-keep class com.raffa064.reciper.MainActivity { <init>(...); }
+

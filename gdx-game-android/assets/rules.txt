@@ -1,0 +1,44 @@
+#items:
+Milk: milk.png
+MilkGlass: milk-glass.png
+CoffeeBean: coffee-bean.png
+CoffeeGlass: coffee-glass.png
+CoffeeWithMilk: coffee-w-milk.png
+-----------------------
+Sand: sand.png
+Fire: fire.png
+GlassShard: glass-shard.png
+EmptyGlass: empty-glass.png
+----------------------------
+OrangeJuice: orange-juice.png
+StrawbarryJuice: strawbarry-juice.png
+BananaJuice: banana-juice.png
+---------------------------
+Water: water.png
+WaterGlass: water-glass.png
+---------------------------
+Orange: orange.png
+Strawbarry: strawbarry.png
+Banana: banana.png
+
+#rules:
+MilkGlass: Milk, EmptyGlass
+CoffeeGlass: CoffeeBean, WaterGlass
+CoffeeWithMilk: CoffeeGlass, MilkGlass
+GlassShard: Fire, Sand
+EmptyGlass: GlassShard, GlassShard
+WaterGlass: Water, EmptyGlass
+OrangeJuice: Orange, WaterGlass
+StrawbarryJuice: Strawbarry, WaterGlass
+BananaJuice: Banana, WaterGlass
+
+
+#dinamic:
+var list = dinamic.getItemNames();
+for (var i = 0; i < list.size(); i++) {
+    var item = list.get(i);
+    if (item.endsWith('Glass') || item.endsWith('Juice')) {
+		dinamic.createRule('EmptyGlass', "Fire", item)
+		dinamic.log(item)
+	}
+}

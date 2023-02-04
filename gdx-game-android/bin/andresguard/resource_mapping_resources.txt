@@ -1,0 +1,11 @@
+res path mapping:
+    res/drawable-ldpi-v4 -> r/a
+    res/drawable-mdpi-v4 -> r/b
+    res/layout -> r/c
+    res/drawable-hdpi-v4 -> r/d
+
+
+res id mapping:
+    com.libgdx.template.R.drawable.ic_launcher -> com.libgdx.template.R.drawable.a
+    com.libgdx.template.R.layout.main -> com.libgdx.template.R.layout.a
+    com.libgdx.template.R.string.app_name -> com.libgdx.template.R.string.a
