@@ -49,7 +49,7 @@ Finally, it says for the "engine" that the item3 is the result of the combinatio
 
 The *dynamic scripts* can do all the thing of the **"#items:"** and **"#rules:"**, bud with JavaScript:
 ```JavaScript
-#dynamic
+#dynamic:
 
 //Create items
 dynamic.createItem('item1', 'texture1.png')
@@ -62,7 +62,7 @@ dynamic.createRule('item3', 'item1', 'item2')
 The advantage of the dynamic scripts is to easily automate the things... for example:
 
 ```JavaScript
-#dynamic
+#dynamic:
 
 //Create items
 for (let i = 1; i <= 3; i++) {
