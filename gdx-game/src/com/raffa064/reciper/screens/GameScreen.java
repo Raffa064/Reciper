@@ -209,29 +209,29 @@ public class GameScreen extends InputAdapter implements Screen {
 			}
 		}
 
-		public static class DinamicJavascript {
+		public static class DynamicJavascript {
 			public Context ctx;
 			public ScriptableObject scope;
 			public Manager manager;
 
-			public DinamicJavascript(Manager manager) {
+			public DynamicJavascript(Manager manager) {
 				this.manager = manager;
 				ctx = Context.enter();
 				ctx.setOptimizationLevel(-1);
 				scope = ctx.initStandardObjects();
-				scope.put("dinamic", scope, new DinamicManager(ctx, scope, manager));
+				scope.put("dynamic", scope, new DynamicManager(ctx, scope, manager));
 			}
 
 			public void exec(String script) {
 				ctx.compileString(script, "script.js", 0, null).exec(ctx, scope);
 			}
 
-			public static class DinamicManager {
+			public static class DynamicManager {
 				public Context ctx;
 				public ScriptableObject scope;
 				public Manager manager;
 
-				public DinamicManager(Context ctx, ScriptableObject scope, Manager manager) {
+				public DynamicManager(Context ctx, ScriptableObject scope, Manager manager) {
 					this.ctx = ctx;
 					this.scope = scope;
 					this.manager = manager;
@@ -262,7 +262,7 @@ public class GameScreen extends InputAdapter implements Screen {
 		}
 
 		public static class Manager {
-			public DinamicJavascript dinamicJavascript;
+			public DynamicJavascript dinamicJavascript;
 			public List<Item> items = new ArrayList<>();
 			public List<Item> trash = new ArrayList<>();
 			public MergeRules mergeRules = new MergeRules(this);
@@ -299,12 +299,12 @@ public class GameScreen extends InputAdapter implements Screen {
 							readingItems = true;
 						}
 
-						if (line.toLowerCase().equals("#dinamic:")) {
+						if (line.toLowerCase().equals("#dynamic:")) {
 							readingDinamic = true;
 						}
 					} else {
 						if (readingItems) { //Reading rule
-							if (line.matches("[a-zA-Z0-9\\-_]{1,}\\s*:\\s*[a-zA-Z0-9\\-_\\.]{1,}")) { //name: texture
+							if (line.matches("[a-zA-Z0-9\\-_]{1,}\\s*:\\s*[a-zA-Z0-9\\-_\\./]{1,}")) { //name: texture
 								int colon = line.indexOf(":");
 
 								String name = line.substring(0, colon).trim();
@@ -321,7 +321,7 @@ public class GameScreen extends InputAdapter implements Screen {
 					}
 				}
 
-				dinamicJavascript = new DinamicJavascript(this);
+				dinamicJavascript = new DynamicJavascript(this);
 				dinamicJavascript.exec(dinamicScript);
 
 				mergeRules.load(rules);

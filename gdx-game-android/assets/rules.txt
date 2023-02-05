@@ -33,12 +33,12 @@ StrawbarryJuice: Strawbarry, WaterGlass
 BananaJuice: Banana, WaterGlass
 
 
-#dinamic:
-var list = dinamic.getItemNames();
+#dynamic:
+var list = dynamic.getItemNames();
 for (var i = 0; i < list.size(); i++) {
     var item = list.get(i);
     if (item.endsWith('Glass') || item.endsWith('Juice')) {
-		dinamic.createRule('EmptyGlass', "Fire", item)
-		dinamic.log(item)
+		dynamic.createRule('EmptyGlass', "Fire", item)
+		dynamic.log(item)
 	}
 }
